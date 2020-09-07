@@ -1,11 +1,13 @@
 package dev.hotel.web;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,12 +35,17 @@ public class ClientController {
 
 	}
 
-	public ResponseEntity<?> postClient(@RequestBody Client client) {
+	// Voir si L'UUDI d'un client est en base de donnée...
 
-		if (client.getNom().length() <= 2) {
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("L'UUDI ne correspond à aucun client en BDD");
+	@RequestMapping(method = RequestMethod.GET, path = "clients/{uuid}")
+	public ResponseEntity<?> GetClient(@PathVariable UUID uuid) {
+
+		Optional<Client> optClient = this.clientRepository.findById(uuid);
+
+		if (optClient.isPresent()) {
+			return ResponseEntity.status(HttpStatus.OK).body(optClient.get());
 		} else {
-			return ResponseEntity.status(HttpStatus.OK).header("message", "cool").body(client);
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("L'UUDI ne correspond à aucun client en BDD");
 		}
 	}
 
