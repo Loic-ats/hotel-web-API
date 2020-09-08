@@ -16,7 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import dev.hotel.ClientService.ClientService;
+import dev.hotel.Service.ClientService;
 import dev.hotel.entite.Client;
 import dev.hotel.web.client.ClientController;
 

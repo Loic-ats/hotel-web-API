@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dev.hotel.ClientService.ClientService;
+import dev.hotel.Service.ClientService;
 import dev.hotel.entite.Client;
 
 @RestController

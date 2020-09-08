@@ -1,4 +1,4 @@
-package dev.hotel.ClientService;
+package dev.hotel.Service;
 
 import java.util.List;
 import java.util.Optional;
