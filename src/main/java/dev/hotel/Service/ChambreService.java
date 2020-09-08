@@ -1,9 +1,27 @@
 package dev.hotel.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import dev.hotel.entite.Chambre;
+import dev.hotel.repository.ChambreRepository;
+
+@Service
 public class ChambreService {
 
-	public ChambreService() {
-		// TODO Auto-generated constructor stub
+	private ChambreRepository cRep;
+
+	/**
+	 * @param cRep
+	 */
+	public ChambreService(ChambreRepository cRep) {
+		this.cRep = cRep;
+	}
+
+	public Optional<Chambre> recupererChambre(UUID uuid) {
+		return cRep.findById(uuid);
 	}
 
 }

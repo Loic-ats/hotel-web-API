@@ -4,53 +4,77 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import dev.hotel.entite.Client;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class CreerReservationsRequestDto {
 
+	@NotNull
 	private LocalDate dateDebut;
+	@NotNull
 	private LocalDate dateFin;
-	private Client Client;
-	private List<UUID> Chambre;
+	@NotNull
+	private UUID clientId;
 
-	public CreerReservationsRequestDto(LocalDate dateDebut, LocalDate dateFin, Client client, List<UUID> chambre) {
-		super();
-		this.dateDebut = dateDebut;
-		this.dateFin = dateFin;
-		this.Client = client;
-		this.Chambre = chambre;
-	}
+	@NotEmpty
+	private List<UUID> chambres;
 
+	/**
+	 * @return the dateDebut
+	 */
 	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
 
+	/**
+	 * @param dateDebut the dateDebut to set
+	 */
 	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
+	/**
+	 * @return the dateFin
+	 */
 	public LocalDate getDateFin() {
 		return dateFin;
 	}
 
+	/**
+	 * @param dateFin the dateFin to set
+	 */
 	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
 
-	public Client getClient() {
-		return Client;
+	/**
+	 * @return the clientId
+	 */
+
+	public UUID getClientId() {
+		return clientId;
 	}
 
-	public void setClient(Client client) {
-		Client = client;
+	/**
+	 * @param clientId the clientId to set
+	 */
+
+	public void setClientId(UUID clientId) {
+		this.clientId = clientId;
 	}
 
-	public List<UUID> getChambre() {
-		return Chambre;
+	/**
+	 * @return the chambres
+	 */
+	public List<UUID> getChambres() {
+		return chambres;
 	}
 
-	public void setChambre(List<UUID> chambre) {
-		Chambre = chambre;
+	/**
+	 * @param chambres the chambres to set
+	 */
+	public void setChambres(List<UUID> chambres) {
+		this.chambres = chambres;
 	}
 
 }
